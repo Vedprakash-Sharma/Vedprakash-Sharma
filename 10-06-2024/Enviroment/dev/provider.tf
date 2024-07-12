@@ -13,7 +13,7 @@ terraform {
     resource_group_name  = "sunita"
     storage_account_name = "sunitastorage"
     container_name       = "sunitacontainer"
-    key                  = "dev.terraform.tfstate"
+    key                  = "development.terraform.tfstate"
   }
 
 }
