@@ -1,0 +1,1 @@
+variable "dyanamic_vnet" {}
