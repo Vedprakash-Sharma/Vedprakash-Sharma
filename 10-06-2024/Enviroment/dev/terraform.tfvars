@@ -16,10 +16,8 @@ all_resource_backend = {
     location                 = "westus"
     account_tier             = "Standard"
     account_replication_type = "GRS"
-
     con_name              = "tcscontainer"
     container_access_type = "private"
-
   }
 }
 
@@ -45,7 +43,6 @@ dyanamic_vnet = {
 
 subnet_12 = {
   snet_01 = {
-
     name                 = "tcs_subnet_project"
     resource_group_name  = "Home_office"
     virtual_network_name = "tcs_network"
@@ -80,7 +77,6 @@ nic_12 = {
     private_ip_address_allocation = "Dynamic"
     subnet_name                   = "tcs_subnet_project"
     virtual_network_name          = "tcs_network"
-
   }
 
   nic_02 = {
@@ -104,7 +100,6 @@ rgnsg99 = {
 
 vnetrg = {
   vnet_01 = {
-
     name                = "tcs_network"
     resource_group_name = "Home_office"
     address_space       = ["10.0.0.0/16"]
@@ -113,7 +108,6 @@ vnetrg = {
   }
 
   vnet_02 = {
-
     name                = "tcs_network_peering"
     resource_group_name = "Home_office"
     address_space       = ["10.0.0.0/16"]
@@ -131,31 +125,27 @@ virtual_machine = {
     resource_group_name             = "Home_office"
     location                        = "westus"
     size                            = "Standard_F2"
-    admin_username                  = "adminuser"
-    
-    
+    admin_username                  = "adminuser"    
     caching                         = "ReadWrite"
-    publisher                       = "Canonical"
-    offer                           = "0001-com-ubuntu-server-jammy"
-    sku                             = "22_04-lts"
+    publisher                       = "canonical"
+    offer                           = "0001-com-ubuntu-minimal-focal"
+    sku                             = "minimal-20_04-lts-ARM"
     version                         = "latest"
     nic_name                        = "tcs_nic_01"
   }
 
   vm_02 = {
-
     name                = "tcsvm02"
     resource_group_name = "Home_office"
     location            = "westus"
     size                = "Standard_F2"
     admin_username      = "adminuser"
-
     disable_password_authentication = false
     caching                         = "ReadWrite"
     storage_account_type            = "Standard_LRS"
-    publisher                       = "Canonical"
-    offer                           = "0001-com-ubuntu-server-jammy"
-    sku                             = "22_04-lts"
+    publisher                       = "canonical"
+    offer                           = "0001-com-ubuntu-minimal-focal"
+    sku                             = "minimal-20_04-lts-ARM"
     version                         = "latest"
     nic_name                        = "tcs_nic_02"
   }
@@ -168,7 +158,6 @@ Bastion_host = {
     resource_group_name = "Home_office"
     allocation_method   = "Static"
     sku                 = "Standard"
-
     name_host            = "tcs_bastion"
     name_subnet          = "AzureBastionSubnet"
     virtual_network_name = "tcs_network"
@@ -178,10 +167,3 @@ Bastion_host = {
 }
 
 
-application_gatway = {
-  app_01 = {}
-}
-
-# vnet_local = {
-#   local_01 = {}
-# }
