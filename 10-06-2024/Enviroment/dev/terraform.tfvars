@@ -16,8 +16,8 @@ all_resource_backend = {
     location                 = "westus"
     account_tier             = "Standard"
     account_replication_type = "GRS"
-    con_name              = "tcscontainer"
-    container_access_type = "private"
+    con_name                 = "tcscontainer"
+    container_access_type    = "private"
   }
 }
 
@@ -60,12 +60,7 @@ subnet_12 = {
     virtual_network_name = "tcs_network"
     address_prefixes     = ["10.0.3.0/24"]
   }
-  snet_03 = {
-    name                 = "agw_subnet"
-    resource_group_name  = "Home_office"
-    virtual_network_name = "tcs_network"
-    address_prefixes     = ["10.0.4.0/24"]
-  }
+  
 }
 
 nic_12 = {
@@ -121,25 +116,25 @@ vnetrg = {
 virtual_machine = {
   vm_01 = {
 
-    name                            = "tcsvm01"
-    resource_group_name             = "Home_office"
-    location                        = "westus"
-    size                            = "Standard_F2"
-    admin_username                  = "adminuser"    
-    caching                         = "ReadWrite"
-    publisher                       = "canonical"
-    offer                           = "0001-com-ubuntu-minimal-focal"
-    sku                             = "minimal-20_04-lts-ARM"
-    version                         = "latest"
-    nic_name                        = "tcs_nic_01"
-  }
-
-  vm_02 = {
-    name                = "tcsvm02"
+    name                = "Frontend_VM_todo_app"
     resource_group_name = "Home_office"
     location            = "westus"
     size                = "Standard_F2"
     admin_username      = "adminuser"
+    caching             = "ReadWrite"
+    publisher           = "canonical"
+    offer               = "0001-com-ubuntu-minimal-focal"
+    sku                 = "minimal-20_04-lts-ARM"
+    version             = "latest"
+    nic_name            = "tcs_nic_01"
+  }
+
+  vm_02 = {
+    name                            = "Backend_VM_todo_app"
+    resource_group_name             = "Home_office"
+    location                        = "westus"
+    size                            = "Standard_F2"
+    admin_username                  = "adminuser"
     disable_password_authentication = false
     caching                         = "ReadWrite"
     storage_account_type            = "Standard_LRS"
@@ -153,16 +148,34 @@ virtual_machine = {
 
 Bastion_host = {
   host = {
-    name                = "tcs_bastion_pip"
-    location            = "westus"
-    resource_group_name = "Home_office"
-    allocation_method   = "Static"
-    sku                 = "Standard"
+    name                 = "tcs_bastion_pip"
+    location             = "westus"
+    resource_group_name  = "Home_office"
+    allocation_method    = "Static"
+    sku                  = "Standard"
     name_host            = "tcs_bastion"
     name_subnet          = "AzureBastionSubnet"
     virtual_network_name = "tcs_network"
     name_ipc             = "ip_con"
 
+  }
+}
+
+ms_sql = {
+  mysql01 = {
+    name                         = "homesqlserver"
+    resource_group_name          = "Home_office"
+    location                     = "westus"
+    version                      = "12.0"
+    administrator_login          = "username"
+    administrator_login_password = "ved@1234"
+    collation                    = "SQL_Latin1_General_CP1_CI_AS"
+    license_type                 = "LicenseIncluded"
+    max_size_gb                  = 4
+    read_scale                   = true
+    sku_name                     = "S0"
+    zone_redundant               = true
+    enclave_type                 = "VBS"
   }
 }
 

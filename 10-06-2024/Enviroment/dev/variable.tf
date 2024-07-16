@@ -7,4 +7,4 @@ variable "rgnsg99" {}
 variable "vnetrg" {}
 variable "virtual_machine" {}
 variable "Bastion_host" {}
-variable "application_gatway" {}
+variable "ms_sql" {}
